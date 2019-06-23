@@ -1,0 +1,39 @@
+---
+cache:
+  directories:
+    - ./Carthage
+
+matrix:
+  include:
+  - name: "Succinct Unit Tests"
+    language: swift
+    osx_image: xcode10.2
+    xcode_project: Succinct.xcodeproj
+    xcode_scheme: Succinct
+    xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 7
+    install:
+      - carthage bootstrap --platform iOS --cache-builds
+
+  - name: "Succinct Simulator Tests"
+    language: swift
+    osx_image: xcode10.2
+    xcode_project: Succinct.xcodeproj
+    xcode_scheme: SuccinctContainer
+    xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 7
+    install:
+      - carthage bootstrap --platform iOS --cache-builds
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - gem install jazzy
+  - make documentation
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_ACCESS_TOKEN
+  local_dir: docs
+  keep_history: true
+  target_branch: gh-pages
+  on:
+    branch: master
