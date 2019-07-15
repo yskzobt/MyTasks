@@ -10,7 +10,14 @@ class ViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        dateLabel.text = "2019/6/23(Sun)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d(EEE)", options: 0, locale: Locale(identifier: "ja_JP"))
+        
+        dateLabel.text = dateFormatter.string(from: Date())
+        dateLabel.textAlignment = NSTextAlignment.left
+        dateLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
         view.addSubview(inputForm)
         inputForm.addArrangedSubview(dateLabel)
     }
