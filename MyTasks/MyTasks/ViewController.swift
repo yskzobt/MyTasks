@@ -1,12 +1,15 @@
 import UIKit
 import PureLayout
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
     private var inputForm = UIStackView.newAutoLayout()
     private var dateLabel: UILabel
     private var titleLabel: UILabel
     private var titleLabel2: UILabel
     private var didSetupConstraints: Bool = false
+    private var taskTitles = ["xxxを購入する", "yyyを入手する"]
+    
     init(){
         dateLabel = UILabel()
         titleLabel = UILabel()
@@ -44,6 +47,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let taskList: UITableView = UITableView(frame: view.frame, style: .plain)
+        taskList.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        taskList.delegate = self
+        taskList.dataSource = self
+        view.addSubview(taskList)
+        
     }
 
     override func updateViewConstraints() {
@@ -53,6 +62,19 @@ class ViewController: UIViewController {
         }
         super.updateViewConstraints()
     }
+    
+    func tableView(_ taskList: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return taskTitles.count
+    }
+
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                                  for: indexPath)
+        cell.textLabel?.text = taskTitles[indexPath.row]
+        return cell
+    }
 
 }
-

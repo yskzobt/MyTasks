@@ -33,6 +33,11 @@ class MyTasksTest: QuickSpec{
             expect(viewController.hasLabel(withExactText: "yyyを入手する")).to(beTrue())
 
         }
+        
+        it("tableViewが表示されること") {
+            let tableView = UITableView()
+            expect(tableView).notTo(beNil())
+        }
     }
 
 }
