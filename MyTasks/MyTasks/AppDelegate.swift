@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         
         let viewController = ViewController()
-        viewController.view.backgroundColor = .red
+        viewController.view.backgroundColor = .white
         
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
