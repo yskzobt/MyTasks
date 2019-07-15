@@ -25,6 +25,12 @@ class MyTasksTest: QuickSpec{
         it("一覧画面にタスクのタイトルが1つ表示されること"){
             let viewController = ViewController()
             expect(viewController.hasLabel(withExactText: "xxxを購入する")).to(beTrue())
+            
+        }
+        
+        it("一覧画面にタスクのタイトルが2つ表示されること"){
+            let viewController = ViewController()
+            expect(viewController.hasLabel(withExactText: "yyyを入手する")).to(beTrue())
 
         }
     }

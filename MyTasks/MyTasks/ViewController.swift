@@ -5,10 +5,12 @@ class ViewController: UIViewController {
     private var inputForm = UIStackView.newAutoLayout()
     private var dateLabel: UILabel
     private var titleLabel: UILabel
+    private var titleLabel2: UILabel
     private var didSetupConstraints: Bool = false
     init(){
         dateLabel = UILabel()
         titleLabel = UILabel()
+        titleLabel2 = UILabel()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -25,9 +27,14 @@ class ViewController: UIViewController {
         titleLabel.textAlignment = NSTextAlignment.left
         titleLabel.font = UIFont.systemFont(ofSize: 20.0)
         
+        titleLabel2.text = "yyyを入手する"
+        titleLabel2.textAlignment = NSTextAlignment.left
+        titleLabel2.font = UIFont.systemFont(ofSize: 20.0)
+        
         view.addSubview(inputForm)
         inputForm.addArrangedSubview(dateLabel)
         inputForm.addArrangedSubview(titleLabel)
+        inputForm.addArrangedSubview(titleLabel2)
     }
 
     required init?(coder aDecoder: NSCoder) {
