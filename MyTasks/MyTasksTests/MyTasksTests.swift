@@ -20,6 +20,11 @@ class MyTasksTest: QuickSpec{
             dateFormatter.timeStyle = .none
             dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d(EEE)", options: 0, locale: Locale(identifier: "ja_JP"))
             expect(viewController.hasLabel(withExactText: dateFormatter.string(from: Date()))).to(beTrue())
+        }
+        
+        it("一覧画面にタスクのタイトルが1つ表示されること"){
+            let viewController = ViewController()
+            expect(viewController.hasLabel(withExactText: "xxxを購入する")).to(beTrue())
 
         }
     }
