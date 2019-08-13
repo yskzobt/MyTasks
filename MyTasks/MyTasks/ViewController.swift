@@ -1,15 +1,19 @@
 import UIKit
 import PureLayout
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     private var inputForm = UIStackView.newAutoLayout()
     private var dateLabel: UILabel
+    private var taskList: UITableView
     private var didSetupConstraints: Bool = false
     private var taskTitles = ["xxxを購入する", "yyyを入手する"]
+    var fetchedArray: [Task] = []
     
     init(){
         dateLabel = UILabel()
+        taskList = UITableView.newAutoLayout()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -33,7 +37,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let taskList: UITableView = UITableView(frame: view.frame, style: .plain)
         taskList.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         taskList.delegate = self
         taskList.dataSource = self
@@ -44,6 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func updateViewConstraints() {
         if didSetupConstraints == false {
             inputForm.autoPinEdgesToSuperviewSafeArea(with: .zero, excludingEdge: .bottom)
+            taskList.autoPinEdgesToSuperviewEdges()
             didSetupConstraints = true
         }
         super.updateViewConstraints()
@@ -51,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ taskList: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return taskTitles.count
+        return fetchedArray.count
     }
 
     func tableView(_ tableView: UITableView,
@@ -59,8 +63,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                                   for: indexPath)
-        cell.textLabel?.text = taskTitles[indexPath.row]
+        let tasks = fetchedArray[indexPath.row]
+        if let title = tasks.title{
+            cell.textLabel?.text = title
+        }
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Task")
+        do {
+            fetchedArray = try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [Task]
+        } catch let error as NSError {
+            print("Could not fetch. ¥(error), ¥(error.userInfo)")
+        }
+    }
+    
+    func refreshTableView(){
+        taskList.reloadData()
     }
 
 }

@@ -20,6 +20,9 @@
 		D81F294322BF158300244514 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D81F293D22BF152F00244514 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D81F294422BF158300244514 /* Succinct.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D81F293B22BF152300244514 /* Succinct.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D81F294622BF16EA00244514 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F294522BF16EA00244514 /* main.swift */; };
+		D8308D4D22DC62B600F2B117 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8308D4B22DC62B600F2B117 /* Task+CoreDataClass.swift */; };
+		D8308D4E22DC62B600F2B117 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8308D4C22DC62B600F2B117 /* Task+CoreDataProperties.swift */; };
+		D8EED41722D9B1290037B997 /* MyTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8EED41522D9B1290037B997 /* MyTasks.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		D81F293D22BF152F00244514 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		D81F293F22BF153C00244514 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		D81F294522BF16EA00244514 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D8308D4B22DC62B600F2B117 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "MyTasks/Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D8308D4C22DC62B600F2B117 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "MyTasks/Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D8EED41622D9B1290037B997 /* task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = task.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,9 @@
 		D81F290722BF081F00244514 = {
 			isa = PBXGroup;
 			children = (
+				D8308D4B22DC62B600F2B117 /* Task+CoreDataClass.swift */,
+				D8308D4C22DC62B600F2B117 /* Task+CoreDataProperties.swift */,
+				D8EED41522D9B1290037B997 /* MyTasks.xcdatamodeld */,
 				D81F291222BF081F00244514 /* MyTasks */,
 				D81F292722BF082000244514 /* MyTasksTests */,
 				D81F291122BF081F00244514 /* Products */,
@@ -261,8 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EED41722D9B1290037B997 /* MyTasks.xcdatamodeld in Sources */,
+				D8308D4D22DC62B600F2B117 /* Task+CoreDataClass.swift in Sources */,
 				D81F291622BF081F00244514 /* ViewController.swift in Sources */,
 				D81F291422BF081F00244514 /* AppDelegate.swift in Sources */,
+				D8308D4E22DC62B600F2B117 /* Task+CoreDataProperties.swift in Sources */,
 				D81F294622BF16EA00244514 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +550,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D8EED41522D9B1290037B997 /* MyTasks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D8EED41622D9B1290037B997 /* task.xcdatamodel */,
+			);
+			currentVersion = D8EED41622D9B1290037B997 /* task.xcdatamodel */;
+			path = MyTasks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D81F290822BF081F00244514 /* Project object */;
 }
