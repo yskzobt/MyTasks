@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "MyTasks")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

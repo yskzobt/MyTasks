@@ -36,10 +36,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         taskList.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         taskList.delegate = self
         taskList.dataSource = self
+
         view.addSubview(taskList)
         
     }
@@ -81,7 +82,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             fetchedArray = try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [Task]
         } catch let error as NSError {
-            print("Could not fetch. ¥(error), ¥(error.userInfo)")
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
